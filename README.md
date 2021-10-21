@@ -1,4 +1,4 @@
-# GAN_anime_faces
+# GAN_faces
 
 Personal project to create a model that can generate faces using a GAN set up
 
