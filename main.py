@@ -3,27 +3,25 @@ from data_prep import *
 import os
 import time
 
+attempt = 3
+EPOCHS = 300
+# noise_dim is in GAN.py
+num_examples_to_generate = 16
+
+seed = tf.random.normal([num_examples_to_generate, noise_dim])
+
 generator = make_generator_model()
 discriminator = make_discriminator_model()
 
 generator_optimizer = tf.keras.optimizers.Adam(1e-4)
 discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
 
-checkpoint_dir = './training_checkpoints'
+checkpoint_dir = f'Attempt{attempt}/training_checkpoints'
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
 checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer,
                                  discriminator_optimizer=discriminator_optimizer,
                                  generator=generator,
                                  discriminator=discriminator)
-
-EPOCHS = 200
-noise_dim = 100
-num_examples_to_generate = 16
-
-# You will reuse this seed overtime (so it's easier)
-# to visualize progress in the animated GIF)
-seed = tf.random.normal([num_examples_to_generate, noise_dim])
-
 
 def trunc(x):  # truncates decimal
     return float('%.6f' % x)
@@ -117,7 +115,7 @@ def generate_and_save_images(model, epoch, test_input):
         plt.imshow(tf.cast(predictions[i] * 127.5 + 127.5, tf.int32))
         plt.axis('off')
 
-    plt.savefig('checkpoint_images/image_at_epoch_{:04d}.png'.format(epoch))
+    plt.savefig('Attempt{}/checkpoint_images/image_at_epoch_{:04d}.png'.format(attempt,epoch))
     # plt.show()
 
 
@@ -135,15 +133,8 @@ plt.clf()
 # plotting stats per epoch
 for stat in history:
     plot_graphs(history, stat)
-    plt.savefig(f"{stat}_per_epoch.png")
+    plt.savefig(f"Attempt{attempt}/{stat}_per_epoch.png")
     plt.clf()
 
 generate_and_save_images(generator, 9999, tf.random.normal([num_examples_to_generate, noise_dim]))
 
-'''
-class Model:
-    def __init__(self, batch_size=128, learning_rate=1e-4, epochs=10):
-        self.batch_size = batch_size
-        self.learning_rate = learning_rate
-        self.epochs = epochs
-'''

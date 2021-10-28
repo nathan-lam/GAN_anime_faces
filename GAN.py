@@ -1,10 +1,11 @@
 from data_prep import *
 from tensorflow.keras import layers
 
+noise_dim = 100
 
 def make_generator_model():
     model = tf.keras.Sequential()  # layer object
-    model.add(layers.Dense(4 * 4 * 256, use_bias=False, input_shape=(100,)))
+    model.add(layers.Dense(4 * 4 * 256, use_bias=False, input_shape=(noise_dim,)))
     model.add(layers.BatchNormalization())  # does a form of normalizing
     model.add(layers.LeakyReLU())
     L = 1
