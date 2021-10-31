@@ -4,8 +4,8 @@ import os
 import time
 
 attempt = 3
-EPOCHS = 300
-# noise_dim is in GAN.py
+EPOCHS = 400
+# noise_dim is set in GAN.py
 num_examples_to_generate = 16
 
 seed = tf.random.normal([num_examples_to_generate, noise_dim])

@@ -39,7 +39,7 @@ for i in range(n2+1, m):
     img = cv2.imread(data_path + names_list[i])  # read in image
     img_cvt = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # correct the color values
     data_set = np.concatenate((data_set, img_cvt.reshape(1, img.shape[0], img.shape[1], img.shape[2])), axis=0)
-    if i % (n//100) == 0:
+    if i % (100) == 0:
         print(f"{i}/{n} = {int(i/n*100)}% - {time.time() - start} seconds - Saved Check point")
         start = time.time()
         np.save(folder_path+f"np_{file_name}.npy", data_set)
