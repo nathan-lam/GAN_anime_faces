@@ -116,7 +116,7 @@ def generate_and_save_images(model, epoch, test_input):
         plt.axis('off')
 
     plt.savefig('Attempt{}/checkpoint_images/image_at_epoch_{:04d}.png'.format(attempt,epoch))
-    # plt.show()
+    plt.close('all')
 
 
 def plot_graphs(history, metric):
@@ -128,13 +128,13 @@ def plot_graphs(history, metric):
 
 
 history = train(train_dataset, EPOCHS)
-plt.clf()
+plt.close('all')
 
 # plotting stats per epoch
 for stat in history:
     plot_graphs(history, stat)
     plt.savefig(f"Attempt{attempt}/{stat}_per_epoch.png")
-    plt.clf()
+    plt.close('all')
 
 generate_and_save_images(generator, 9999, tf.random.normal([num_examples_to_generate, noise_dim]))
 
