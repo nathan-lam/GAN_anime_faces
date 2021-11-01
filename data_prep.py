@@ -2,7 +2,8 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-file_path = "C:/Users/nthnt/PycharmProjects/GAN_faces_pycharm/Datasets/np_anime_faces.npy"
+file_name = "cats"
+file_path = f"C:/Users/nthnt/PycharmProjects/GAN_faces_pycharm/Datasets/np_{file_name}.npy"
 data_set = np.load(file_path)
 
 data_normal = (data_set - 127.5) / 127.5

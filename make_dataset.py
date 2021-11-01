@@ -4,7 +4,7 @@ import cv2 # image processing
 import time # Track runtime
 # import matplotlib.pyplot as plt
 
-file_name = "Human_faces"
+file_name = "cats"
 folder_path = "C:/Users/nthnt/PycharmProjects/GAN_faces_pycharm/Datasets/"
 
 names_list = os.listdir(folder_path+file_name+"/")

@@ -3,8 +3,8 @@ from data_prep import *
 import os
 import time
 
-attempt = 3
-EPOCHS = 400
+attempt = 4
+EPOCHS = 300
 # noise_dim is set in GAN.py
 num_examples_to_generate = 16
 
