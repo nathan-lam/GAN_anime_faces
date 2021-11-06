@@ -1,7 +1,13 @@
-from GAN import *
-from data_prep import *
-import os
+import matplotlib.pyplot as plt
+import tensorflow as tf
+import numpy as np
 import time
+import os
+
+from data_prep import BUFFER_SIZE, BATCH_SIZE, train_dataset
+from GAN import noise_dim, make_generator_model, make_discriminator_model, cross_entropy, generator_loss, discriminator_loss
+
+
 
 attempt = 4
 EPOCHS = 300

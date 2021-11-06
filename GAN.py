@@ -1,7 +1,9 @@
-from data_prep import *
+import tensorflow as tf
+
+from data_prep import train_dataset
 from tensorflow.keras import layers
 
-noise_dim = 100
+noise_dim = 1000
 
 def make_generator_model():
     model = tf.keras.Sequential()  # layer object

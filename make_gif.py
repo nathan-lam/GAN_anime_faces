@@ -1,7 +1,11 @@
 import imageio
 import os
 
+#from main import attempt
+
+
 attempt = 4
+
 path = f"Attempt{attempt}/checkpoint_images/"
 file_names = os.listdir(path)
 
